@@ -17,8 +17,15 @@ const main = async () => {
 
     waveTxn = await waveContract.connect(randomPerson).wave();
     await waveTxn.wait();
-
     waveCount = await waveContract.getTotalWaves();
+
+    let senderArray = [];
+    senderArray.push(randomPerson.address);
+
+    let receiverArray = [];
+    receiverArray.push(waveContract.address);
+    console.log(`${receiverArray} is the receiver address`);
+    console.log(`${senderArray} is sending ${waveCount} waves to ${receiverArray}`);
 };
 
 const runMain = async () => {
